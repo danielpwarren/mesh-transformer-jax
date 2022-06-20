@@ -12,12 +12,12 @@
   "per_replica_batch": 1,
   "gradient_accumulation_steps": 28,
 
-  "warmup_steps": 1,
-  "anneal_steps": 6,
+  "warmup_steps": 1562,
+  "anneal_steps": 14059,
   "lr": 5e-5,
   "end_lr": 1e-5,
   "weight_decay": 0.1,
-  "total_steps": 7,
+  "total_steps": 15621,
 
   "tpu_size": 8,
 
@@ -32,9 +32,9 @@
   ],
 
   "val_batches": 0,
-  "val_every": 8,
-  "ckpt_every": 1,
-  "keep_every": 1,
+  "val_every": 15622,
+  "ckpt_every": 1000,
+  "keep_every": 5000,
 
   "name": "dialogptj6b-mini",
   "wandb_project": "mesh-transformer-jax",
