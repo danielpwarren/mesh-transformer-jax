@@ -70,7 +70,7 @@ if __name__ == "__main__":
     print(f"using checkpoint {ckpt_step}")
 
     total_batch = per_replica_batch * jax.device_count() // cores_per_replica
-    with jax.experimental.maps.mesh(devices, ('dp', 'mp')):
+    with jax.experimental.maps.Mesh(devices, ('dp', 'mp')):
         network = CausalTransformer(params)
 
         start = time.time()
@@ -82,6 +82,7 @@ if __name__ == "__main__":
         network.state = network.move_xmap(network.state, np.zeros(local_shards))
 
         tokenizer = transformers.GPT2TokenizerFast.from_pretrained('gpt2')
+        tokenizer.add_tokens(['<|endofturn|>'])
 
         while True:
             context = input("Type input:")
@@ -96,7 +97,7 @@ if __name__ == "__main__":
             batched_tokens = np.array([padded_tokens] * total_batch)
             length = np.ones(total_batch, dtype=np.uint32) * len(tokens)
 
-            output = network.generate(batched_tokens, length, 512, {"top_p": np.ones(total_batch) * 0.9,
+            output = network.generate(batched_tokens, length, 128, {"top_p": np.ones(total_batch) * 0.9,
                                                                     "temp": np.ones(total_batch) * 0.75})
 
             for idx, o in enumerate(output[1][0][:, :, 0]):
