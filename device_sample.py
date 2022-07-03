@@ -86,7 +86,7 @@ if __name__ == "__main__":
 
         while True:
             context = input("Type input:")
-            tokens = tokenizer.encode(context)
+            tokens = tokenizer.encode(context+"<|endofturn|>")
 
             start = time.time()
 

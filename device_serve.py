@@ -134,6 +134,7 @@ if __name__ == "__main__":
         network.state = network.move_xmap(network.state, np.zeros(local_shards))
 
         tokenizer = transformers.GPT2TokenizerFast.from_pretrained('gpt2')
+        tokenizer.add_tokens(['<|endofturn|>'])
 
         while True:
             all_ctx = []
@@ -182,7 +183,7 @@ if __name__ == "__main__":
 
             output = network.generate(np.array(all_tokenized),
                                       np.array(all_length),
-                                      256,
+                                      128,
                                       {
                                           "top_p": np.array(all_top_p),
                                           "temp": np.array(all_temp)

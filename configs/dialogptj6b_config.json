@@ -12,17 +12,17 @@
   "per_replica_batch": 1,
   "gradient_accumulation_steps": 32,
 
-  "warmup_steps": 1562,
-  "anneal_steps": 14059,
+  "warmup_steps": 44500,
+  "anneal_steps": 400500,
   "lr": 5e-5,
   "end_lr": 1e-5,
   "weight_decay": 0.1,
-  "total_steps": 15621,
+  "total_steps": 445000,
 
   "tpu_size": 8,
 
   "bucket": "gptjchat",
-  "model_dir": "finetune",
+  "model_dir": "finetune-full",
 
   "train_set": "conv.train.index",
   "val_set": {
@@ -32,12 +32,12 @@
   "eval_harness_tasks": [
   ],
 
-  "val_batches": 64,
+  "val_batches": 100,
   "val_every": 500,
   "ckpt_every": 500,
-  "keep_every": 1000,
+  "keep_every": 10000,
 
-  "name": "dialogptj6b",
+  "name": "dialogptj6b-full",
   "wandb_project": "mesh-transformer-jax",
-  "comment": "Subsample of the conv dataset - only the most recent sequences"
+  "comment": "Full dataset ~ 29 billion tokens"
 }
