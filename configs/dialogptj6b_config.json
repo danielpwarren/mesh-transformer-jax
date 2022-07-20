@@ -12,21 +12,21 @@
   "per_replica_batch": 1,
   "gradient_accumulation_steps": 32,
 
-  "warmup_steps": 22219,
-  "anneal_steps": 422169,
+  "warmup_steps": 22220,
+  "anneal_steps": 422164,
   "lr":  4e-5,
   "end_lr": 4e-6,
   "weight_decay": 0.1,
-  "total_steps": 444388,
+  "total_steps": 444384,
 
   "tpu_size": 8,
 
   "bucket": "gptjchat",
-  "model_dir": "finetune-full",
+  "model_dir": "finetune-shuf",
 
-  "train_set": "conv.new.train.index",
+  "train_set": "conv.shuffled.train.index",
   "val_set": {
-    "val": "conv.new.val.index"
+    "val": "conv.shuffled.val.index"
   },
 
   "eval_harness_tasks": [
@@ -37,7 +37,7 @@
   "ckpt_every": 500,
   "keep_every": 10000,
 
-  "name": "dialogptj6b-revised",
+  "name": "dialogptj6b-shuffled",
   "wandb_project": "mesh-transformer-jax",
-  "comment": "Full revised dataset ~29 billion tokens"
+  "comment": "Full shuffled dataset ~29 billion tokens"
 }
